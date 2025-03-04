@@ -20,5 +20,3 @@ if uploaded_file is not None:
     st.download_button("Download Processed CSV", csv, "processed_cards.csv", "text/csv")
 
 st.write("This app should correctly append the border treatment to any card name so that it will search correctly on the MTGMate buy list.")
-
-st.write("TODO: add support for etched foils")

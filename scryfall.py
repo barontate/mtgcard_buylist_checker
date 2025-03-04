@@ -19,6 +19,10 @@ def fetch_scryfall_data(scryfall_id):
         if frame_effect == ['extendedart']:
             card_name += " (Extended Art)"
 
+        if frame_effect == ['showcase']:
+            card_name += " (Showcase)"
+        
+
         return card_name
     else:
         return "Not Found", "Unknown"
