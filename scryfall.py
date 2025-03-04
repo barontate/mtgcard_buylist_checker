@@ -9,13 +9,13 @@ def fetch_scryfall_data(scryfall_id):
         data = response.json()
         card_name = data.get("name", "Unknown")
         border_color = data.get("border_color", "Unknown")
-        frame_effect = data.get("frame_effects", [0][0])
+        frame_effect = data.get("frame_effects", [0])
         
         # Modify name based on border color
         if border_color == "borderless":
             card_name += " (Borderless)"
 
-        if frame_effect == 'extendedart':
+        if frame_effect == ['extendedart']:
             card_name += " (Extended Art)"
 
         return card_name
