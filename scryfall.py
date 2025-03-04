@@ -1,5 +1,6 @@
 import requests
 import pandas as pd
+import streamlit as st
 
 SCRYFALL_API_URL = "https://api.scryfall.com/cards/"
 
@@ -10,18 +11,21 @@ def fetch_scryfall_data(scryfall_id):
         data = response.json()
         card_name = data.get("name", "Unknown")
         border_color = data.get("border_color", "Unknown")
-        frame_effect = data.get("frame_effects", [0])
+        frame_effect = data.get("frame_effects")
+
+        if frame_effect:
+            for effect in frame_effect:
+                if effect == 'showcase':
+                    card_name += " (Showcase)"
+                    break
+                if effect == 'extendedart':
+                    card_name += " (Extended Art)"
+                    break
+
         
         # Modify name based on border color
         if border_color == "borderless":
             card_name += " (Borderless)"
-
-        if frame_effect == ['extendedart']:
-            card_name += " (Extended Art)"
-
-        if frame_effect == ['showcase']:
-            card_name += " (Showcase)"
-        
 
         return card_name
     else:
