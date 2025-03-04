@@ -3,8 +3,9 @@ from scryfall import process_csv
     
 # Streamlit UI
 st.title("MTG Card CSV Processor with Scryfall API")
+st.write("Please input a CSV file ")
 
-uploaded_file = st.file_uploader("Upload your CSV file", type=["csv"])
+uploaded_file = st.file_uploader("Upload your CSV file in the Manabox format", type=["csv"])
 
 if uploaded_file is not None:
     st.write("Processing file...")
